@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+body{
+    font-family: '8bitWonder';
+    font-size: xx-large;
+}
+.game {
+    box-sizing: content-box;
+    width: 630px;
+    height: 400px;
+    padding: 2px;
+    border: 3px black solid;
+    user-select: none;
+    display: flex;
+    margin: auto;
+    position: relative;
+    margin-top: 100px;
+}
+  
+.cell {
+    width: 20px;
+    height: 20px;
+}
+  
+.snake {
+    background-color: black;
+    border-radius: 30%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.paused{
+    opacity: 0.6;
+}
+  
+.food {
+    background-image: url('./images/food.svg');
+    background-size: 100% 100%;
+    animation: rotateAnimation 4s linear infinite; /* Adjust animation duration and timing function */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes rotateAnimation {
+  0% {
+    transform:  rotate(0deg);
+  }
+  100% {
+    transform:  rotate(360deg);
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.gameover{
+    font-size:40px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.score{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30%;
+    padding: 3%;
+    margin-right: 30%;
+    font-size: x-large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.level{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 30%;
+}
+
+.levelButton{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-weight: 900;
+    margin-left: 25%;
 }
