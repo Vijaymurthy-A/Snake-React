@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Game from "./Game";
+import tick from "./sound/tick_sound.wav";
 
 function App() {
   const [startgame, setStartGame] = useState(0);
@@ -12,7 +13,9 @@ function App() {
     { label: "WORM", speed: 100 },
     { label: "PYTHON", speed: 50 },
   ];
+  const tick_sound = new Audio(tick);
   const handleLevel = (level) => {
+    tick_sound.play();
     setSpeed(level.speed);
     setLevel(level.label);
     setStartGame(1);
@@ -35,6 +38,7 @@ function App() {
   useEffect(() => {
     if (count > 0 && startgame === 1) {
       setTimeout(() => {
+        if (count > 1) tick_sound.play();
         setCount(count - 1);
       }, 500);
     }
@@ -58,6 +62,7 @@ function App() {
             addScore={addScore}
             resetScore={resetScore}
             score={score}
+            tick_sound={tick_sound}
           />
         );
         break;
@@ -79,7 +84,6 @@ function App() {
                   key={level.speed}
                   onClick={() => handleLevel(level)}
                 >
-                  {" "}
                   {level.label}
                 </button>
               ))}

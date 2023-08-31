@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import gameOverSound from "./sound/game_over.wav";
 
 export default function Game(props) {
   const [direction, setDirection] = useState("DOWN");
@@ -12,7 +13,7 @@ export default function Game(props) {
   const [gameOver, setGameOver] = useState(false);
   const intervalRef = useRef();
   const [gamePaused, setGamePaused] = useState(false);
-
+  const gameSound = new Audio(gameOverSound);
   const isGameOver = (head) => {
     if (head.x < 0 || head.x >= 30 || head.y < 0 || head.y >= 20) {
       return true;
@@ -60,6 +61,7 @@ export default function Game(props) {
   }, [gamePaused]);
 
   useEffect(() => {
+    console.log(direction);
     const moveSnake = () => {
       const newSnake = [...snake];
       const head = { ...newSnake[0] };
@@ -84,6 +86,7 @@ export default function Game(props) {
 
       // Check for food captured by snake
       if (snake[0].x === food.x && snake[0].y === food.y) {
+        props.tick_sound.play();
         const newFood = {
           x: Math.floor(Math.random() * 30),
           y: Math.floor(Math.random() * 20),
@@ -95,6 +98,7 @@ export default function Game(props) {
       }
 
       if (isGameOver(head)) {
+        gameSound.play();
         console.log("Game over");
         clearInterval(intervalRef.current);
         setGameOver(true);

@@ -1,6 +1,12 @@
+@font-face {
+    font-family: '8bitWonder';
+    src: url('../fonts/CHE-EQUI.TTF');
+}
+
 body{
     font-family: '8bitWonder';
-    font-size: xx-large;
+    font-size: xxx-large;
+    background-color: beige;
 }
 .game {
     box-sizing: content-box;
@@ -67,7 +73,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding-left: 30%;
+    padding-left: 28%;
 }
 
 .levelButton{
@@ -84,4 +90,16 @@ body{
     margin-left: 45%;
     margin-top: 25%;
     font-size: 100px;
+}
+
+.button{
+    font-family: '8bitWonder';
+    font-size: large;
+    padding: 5px;
+    background-color: beige;
+    
+}
+
+.button:hover{
+    background-color :aquamarine;
 }
