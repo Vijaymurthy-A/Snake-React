@@ -79,3 +79,9 @@ body{
     font-weight: 900;
     margin-left: 25%;
 }
+
+.startCount{
+    margin-left: 45%;
+    margin-top: 25%;
+    font-size: 100px;
+}

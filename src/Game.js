@@ -114,7 +114,20 @@ export default function Game(props) {
   }, [snake, direction, gamePaused]);
 
   const handleClick = () => {
-    setGamePaused(!gamePaused);
+    if (gameOver) {
+      setGameOver(!gameOver);
+      const newSnake = [
+        { x: 2, y: 4 },
+        { x: 2, y: 3 },
+        { x: 2, y: 2 },
+      ];
+      setSnake(newSnake);
+      props.resetScore();
+      setGamePaused(false);
+      setDirection("DOWN");
+    } else {
+      setGamePaused(!gamePaused);
+    }
   };
 
   return (
